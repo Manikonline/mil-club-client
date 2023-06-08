@@ -20,9 +20,9 @@ const Header = () => {
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box text-black w-52">
         <li><Link to='/'>Home</Link></li>
-        <li><Link>Instructors</Link></li>
-        <li><Link>Classes</Link></li>
-        <li><Link>Dashboard</Link></li>
+        <li><Link to='/instractors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         {
           user? <><img title={user?.displayName} className='rounded-full ms-3 user-img' src={user?.photoURL} alt="" /><Link onClick={handleLogOut} className="ms-2 text-black">LogOut</Link></>:<><li><Link to='/login'>Login</Link></li></>
         }
@@ -33,9 +33,9 @@ const Header = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal text-white px-1">
     <li><Link to='/'>Home</Link></li>
-        <li><Link>Instructors</Link></li>
-        <li><Link>Classes</Link></li>
-        <li><Link>Dashboard</Link></li>
+        <li><Link to='/instractors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
         {
           user? <><img title={user?.displayName} className='rounded-full ms-3 user-img' src={user?.photoURL} alt="" /><Link onClick={handleLogOut} className="ms-2 mt-2 text-white">LogOut</Link></>:<><li><Link to='/login'>Login</Link></li></>
         }
