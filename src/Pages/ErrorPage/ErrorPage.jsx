@@ -5,7 +5,7 @@ import './ErrorPage.css'
 
 const ErrorPage = () => {
     const {error}=useRouteError()
-    console.log(error.message)
+    console.log(error)
     
    
     return (

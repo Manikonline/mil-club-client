@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import './Login.css'
 import { useForm } from 'react-hook-form';
+import { useContext ,useState} from 'react';
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {signIn}=useContext(AuthContext)
+    const [error, setError]=useState('')
 
     const onSubmit = data =>{
         console.log(data)
+        signIn(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            // navigate(from,{replace:true})
+
+
+        })
+        .catch(error => {
+            console.log(error);
+            setError(error.message)
+
+        })
     };
    
     return (
@@ -28,7 +45,7 @@ const Login = () => {
 
                             </div>
                             <div className='text-red-600'>
-                               error:message
+                               <p>{error}</p>
                             </div>
                             <div className="form-control mt-3">
                                 <button className="btn btn-bg-color text-white">Login</button>

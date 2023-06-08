@@ -1,6 +1,15 @@
+import { useContext} from 'react';
 import './Header.css'
 import { Link } from "react-router-dom";
+import { AuthContext } from '../../Providers/AuthProvider/AuthProvider';
+
+
+
 const Header = () => {
+    const{user,logOut}=useContext(AuthContext)
+    const handleLogOut=()=>{
+      logOut()
+    }
     return (
         <div>
             <div className="navbar bg-color">
@@ -14,7 +23,9 @@ const Header = () => {
         <li><Link>Instructors</Link></li>
         <li><Link>Classes</Link></li>
         <li><Link>Dashboard</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+          user? <><img title={user?.displayName} className='rounded-full ms-3 user-img' src={user?.photoURL} alt="" /><Link onClick={handleLogOut} className="ms-2 text-black">LogOut</Link></>:<><li><Link to='/login'>Login</Link></li></>
+        }
       </ul>
     </div>
     <a className="btn btn-ghost text-white text-xl"> <img src="https://i.ibb.co/Wk4wRqH/rsz-1download.png" alt="" />School</a>
@@ -25,7 +36,9 @@ const Header = () => {
         <li><Link>Instructors</Link></li>
         <li><Link>Classes</Link></li>
         <li><Link>Dashboard</Link></li>
-        <li><Link to='login'>Login</Link></li>
+        {
+          user? <><img title={user?.displayName} className='rounded-full ms-3 user-img' src={user?.photoURL} alt="" /><Link onClick={handleLogOut} className="ms-2 mt-2 text-white">LogOut</Link></>:<><li><Link to='/login'>Login</Link></li></>
+        }
     </ul>
   </div>
   

@@ -1,12 +1,28 @@
 import { useForm } from 'react-hook-form';
 import './Registration.css'
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider/AuthProvider';
+
 const Registration = () => {
      
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const{createUser,updateUserData}=useContext(AuthContext)
+ 
+    
 
     const onSubmit = data =>{
         console.log(data)
+        createUser(data.email, data.password)
+        .then(result=>{
+          const loggedUser=result.user
+          console.log(loggedUser)
+          updateUserData(result.user, data?.name, data?.photo)
+      })
+      .catch(error=>{
+          console.log(error)
+          
+      })
     };
     console.log(watch("example"));
     return (
