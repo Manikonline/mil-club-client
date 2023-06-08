@@ -3,12 +3,12 @@ import './Login.css'
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data =>{
         console.log(data)
     };
-    console.log(watch("example"));
+   
     return (
         <div>
                <div className="hero min-h-screen bg-base-200">
