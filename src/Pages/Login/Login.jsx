@@ -1,13 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
 import { useForm } from 'react-hook-form';
 import { useContext ,useState} from 'react';
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import {FaGoogle} from "react-icons/fa";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {signIn}=useContext(AuthContext)
+    const {signIn,googleLogin}=useContext(AuthContext)
     const [error, setError]=useState('')
+    const navigate=useNavigate()
+    const location=useLocation()
+    const from=location?.state?.from?.pathname ||'/'
 
     const onSubmit = data =>{
         console.log(data)
@@ -15,7 +20,14 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
-            // navigate(from,{replace:true})
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Successfully Login',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            navigate(from,{replace:true})
 
 
         })
@@ -25,6 +37,24 @@ const Login = () => {
 
         })
     };
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then((result) => {
+                // This gives you a Google Access Token. You can use it to access Google APIs.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+
+                const user = result.user;
+                navigate(from, {replace:true})
+
+
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+                setError(errorMessage)
+
+            });
+
+    }
    
     return (
         <div>
@@ -58,13 +88,12 @@ const Login = () => {
                    
                     </div>
 
-                    {/* <div className='mt-3 text-center googleLogin text-white'>
+                    <div className='mt-3 text-center googleLogin '>
                             <p className=''>Or</p>
-                            <h5 >Login With</h5>
-                            <div className='py-5 '>
-                                <button onClick={handleGoogleLogin} className="button mb-2 inline-flex " ><FaGoogle className='mt-1 me-1' /> Login with Google</button>
+                            <div className='py-3 '>
+                                <button  onClick={handleGoogleLogin} className="button mb-2 inline-flex " ><FaGoogle className='mt-1 me-1' /> Login with Google</button>
                             </div>
-                        </div> */}
+                        </div>
                 </div>
 
 
