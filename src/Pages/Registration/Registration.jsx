@@ -43,6 +43,7 @@ const Registration = () => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
 
             const user = result.user;
+            console.log(user)
             navigate(from, {replace:true})
 
 
@@ -54,7 +55,7 @@ const Registration = () => {
         });
 
 }
-  console.log(watch("example"));
+ 
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
