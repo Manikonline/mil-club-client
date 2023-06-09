@@ -11,24 +11,41 @@ const Registration = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { createUser, updateUserData ,googleLogin} = useContext(AuthContext)
   const navigate=useNavigate()
-  const location=useLocation()
-  const from=location?.state?.from?.pathname ||'/'
+  
+ 
 
 
   const onSubmit = data => {
-    console.log(data)
+    console.log( 'for cheack',data)
     createUser(data.email, data.password)
       .then(result => {
         const loggedUser = result.user
         console.log(loggedUser)
         updateUserData(result.user, data?.name, data?.photo)
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Registration has been Successfull',
-          showConfirmButton: false,
-          timer: 1500
+        const saveServer={name:data.name, email:data.email, password:data.password, photo:data.photo}
+        fetch('http://localhost:5000/users',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(saveServer)
         })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.insertedId){
+            
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Registration has been Successfull',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            navigate('/');
+          }
+        })
+        
+      
       })
       .catch(error => {
         console.log(error)
@@ -44,7 +61,8 @@ const Registration = () => {
 
             const user = result.user;
             console.log(user)
-            navigate(from, {replace:true})
+            
+            navigate('/');
 
 
         }).catch((error) => {
