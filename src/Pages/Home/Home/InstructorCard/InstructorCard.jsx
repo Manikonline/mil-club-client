@@ -10,7 +10,7 @@ const InstructorCard = ({singleInstructor}) => {
                 <div className="card-body justify-center">
                     <h2 className="card-title">{name}</h2>
                     <div className="card-actions ms-16 ">
-                        <button className="btn btn-xs btn-color">view Info</button>
+                        <button className="btn btn-xs btn-color text-white">view Info</button>
                     </div>
                 </div>
             </div>
