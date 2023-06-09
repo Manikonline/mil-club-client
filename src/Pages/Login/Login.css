@@ -1,14 +1,14 @@
 .btn-bg-color{
-    background-color:#BC1F29;
+    background-color:#59C6BC;
 }
 .btn-bg-color:hover{
     color: black;
 }
 .text-color{
-    color:#BC1F29;
+    color:#59C6BC;
 }
 .btn-color{
-    background-color: #31B3D9;
+    background-color: #59C6BC;
 }
 .googleLogin{
     background-color:#FFFFFF ;
@@ -16,7 +16,7 @@
     color: black;
 }
 .button{
-    background-color:#BC1F29;
+    background-color:#59C6BC;
     padding: 10px 15px;
     color: white;
     border-radius: 8px;

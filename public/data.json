@@ -1,0 +1,33 @@
+[
+    {
+      "name": "John Smith",
+      "image": "https://i.ibb.co/6NLBSWy/attractive-guy-shirt-isolated-white-background-185193-72912.jpg",
+      "email": "john.smith@gmail.com"
+    },
+    {
+      "name": "Jane Doe",
+      "image": "https://i.ibb.co/mXCzj72/instructor-2.jpg",
+      "email": "jane.doe@gmail.com"
+    },
+    {
+      "name": "Michael Johnson",
+      "image": "https://i.ibb.co/t3gBkmd/instructor-3.jpg",
+      "email": "michael.johnson@gmail.com"
+    },
+    {
+      "name": "Emily Davis",
+      "image": "https://i.ibb.co/c355p0z/instructor-4.jpg",
+      "email": "emily.davis@gmail.com"
+    },
+    {
+      "name": "David Lee",
+      "image": "https://i.ibb.co/QX69kjq/instructor-5.jpg",
+      "email": "david.lee@gmail.com"
+    },
+    {
+      "name": "Sarah Wilson",
+      "image": "https://i.ibb.co/xS4ySGH/instructor-6.jpg",
+      "email": "sarah.wilson@gmail.com"
+    }
+  ]
+  
