@@ -4,10 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useContext ,useState} from 'react';
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import {FaGoogle} from "react-icons/fa";
+import {FaEye, FaEyeSlash, FaGoogle} from "react-icons/fa";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const[open, setOpen]=useState(false)
     const {signIn,googleLogin}=useContext(AuthContext)
     const [error, setError]=useState('')
     const navigate=useNavigate()
@@ -55,6 +56,11 @@ const Login = () => {
             });
 
     }
+
+    // show and hide password
+    const toggle=()=>{
+        setOpen(!open)
+    }
    
     return (
         <div>
@@ -69,9 +75,22 @@ const Login = () => {
                                
                                 <input type="email" {...register("email")} name='email' placeholder="email" className="text-black input  input-bordered" required />
                             </div>
-                            <div className="form-control mt-2">
+                            <div className="form-control mt-2 relative">
                                 
-                                <input type="password" {...register("password")} name='password' placeholder="password" className="text-black input input-bordered" required />
+                              <div>
+                              <input type={open===false?'password':'text'} {...register("password")} name='password' placeholder="password" className="text-black input input-bordered" required />
+                              </div>
+                              <div className='absolute top-4 right-5'>
+                              
+                              {
+                                (open===false)?<FaEye onClick={toggle} ></FaEye> :   <FaEyeSlash onClick={toggle} ></FaEyeSlash>
+                              }
+                                
+                             
+                            
+                                
+                               
+                              </div>
 
                             </div>
                             <div className='text-red-600'>
