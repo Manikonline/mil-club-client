@@ -29,7 +29,7 @@ const Instructors = () => {
     </thead>
     <tbody>
       {
-        instructors.map(instructor=> <><tr>
+        instructors.map(instructor=><tr key={instructor._id}>
             <td>
               <div className="flex items-center space-x-3">
                 <div className="avatar">
@@ -52,7 +52,7 @@ const Instructors = () => {
             <th>
               <button className="btn  btn-bg-color text-white btn-xs">See Classes</button>
             </th>
-          </tr></>)
+          </tr>)
       }
 
     </tbody>
