@@ -4,13 +4,13 @@ import PopularClassesCard from "../PopularClassesCard/PopularClassesCard";
 
 const PopularClasses = () => {
     const[classes, setClasses]=useState([])
-    const [useNumber, setUseNumber]=useState(1)
+  
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes?useNumber=${useNumber}`)
+        fetch(`http://localhost:5000/classes`)
         .then(res=>res.json())
         .then(data=>setClasses(data))
-    },[useNumber])
+    },[])
     console.log(classes)
     return (
         <div>
