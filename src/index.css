@@ -6,3 +6,7 @@
 .drawer-side a.active{
     color: #59C6BC;
 }
+.btn-bg-color{
+    background-color:#59C6BC;
+    color:white;
+}

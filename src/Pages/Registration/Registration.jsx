@@ -1,16 +1,19 @@
 import { useForm } from 'react-hook-form';
 import './Registration.css'
-import { Link,useNavigate,useLocation } from "react-router-dom";
+import { Link,useLocation,useNavigate} from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import {FaGoogle} from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Registration = () => {
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const { createUser, updateUserData ,googleLogin} = useContext(AuthContext)
   const navigate=useNavigate()
+  const location=useLocation()
+  const from=location?.state?.from?.pathname ||'/'
   
  
 
@@ -22,7 +25,7 @@ const Registration = () => {
         const loggedUser = result.user
         console.log(loggedUser)
         updateUserData(result.user, data?.name, data?.photo)
-        const saveServer={name:data.name, email:data.email, password:data.password, photo:data.photo}
+        const saveServer={name:data.name, email:data.email, password:data.password, photo:data.photo,role:"Student"}
         fetch('http://localhost:5000/users',{
           method:'POST',
           headers:{
@@ -61,8 +64,22 @@ const Registration = () => {
 
             const user = result.user;
             console.log(user)
+            const saveUser={name:user?.displayName, email:user?.email, photo:user?.photoURL}
+            fetch('http://localhost:5000/users',{
+              method:'POST',
+              headers:{
+                'content-type':'application/json'
+              },
+              body:JSON.stringify(saveUser)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+                navigate(from,{replace:true})
+              
+            })
             
-            navigate('/');
+            
 
 
         }).catch((error) => {

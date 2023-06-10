@@ -24,6 +24,8 @@ import {
 import SelectedClasses from './Pages/Dashboard/SelectedClasses/SelectedClasses';
 import Enrollod from './Pages/Dashboard/Enrollod/Enrollod';
 import PaymentHistory from './Pages/Dashboard/PaymentHistory/PaymentHistory';
+import ManageUser from './Pages/Dashboard/ManageUser/ManageUser';
+import ManageClasses from './Pages/Dashboard/ManageClasses/ManageClasses';
 const queryClient = new QueryClient()
 
 
@@ -61,16 +63,24 @@ const router = createBrowserRouter([
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
-        path:'dashboard/selectedClass',
+        path:'selectedClass',
         element:<SelectedClasses></SelectedClasses>
       },
       {
-        path:'dashboard/enrollod',
+        path:'enrollod',
         element:<Enrollod></Enrollod>
       },
       {
-        path:'dashboard/paymentHistory',
+        path:'paymentHistory',
         element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path:'manageuser',
+        element:<ManageUser></ManageUser>
+      },
+      {
+        path:'manageclasses',
+        element:<ManageClasses></ManageClasses>
       }
     ]
   },

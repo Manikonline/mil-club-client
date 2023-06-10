@@ -5,6 +5,7 @@ import { useContext ,useState} from 'react';
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import {FaEye, FaEyeSlash, FaGoogle} from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -40,21 +41,37 @@ const Login = () => {
     };
     const handleGoogleLogin = () => {
         googleLogin()
-        .then((result) => {
+            .then((result) => {
                 // This gives you a Google Access Token. You can use it to access Google APIs.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
-
+    
                 const user = result.user;
-                navigate(from, {replace:true})
-
-
+                console.log(user)
+                const saveUser={name:user?.displayName, email:user?.email, photo:user?.photoURL}
+                fetch('http://localhost:5000/users',{
+                  method:'POST',
+                  headers:{
+                    'content-type':'application/json'
+                  },
+                  body:JSON.stringify(saveUser)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                    navigate(from,{replace:true})
+                  
+                })
+                
+                
+    
+    
             }).catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage)
-                setError(errorMessage)
-
+                
+    
             });
-
+    
     }
 
     // show and hide password
