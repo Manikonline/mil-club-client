@@ -1,14 +1,44 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 
 const Classes = () => {
-     
+     const {user}=useContext(AuthContext)
 
   const{data:classes=[]}=useQuery(["classes"],async()=>{
     const res = await fetch('http://localhost:5000/spacificclasses')
     return res.json()
   })
   console.log(classes)
+    
+   const addSelectedItemTodb=(data)=>{
+    console.log(data)
+    const saveServer={class_name:data?.class_name, image:data?.image, seats:data?.available_seats, price:data?.price, email:user?.email}
+    fetch('http://localhost:5000/selectedClass',{
+      method:"POST",
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(saveServer)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.insertedId){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Item added Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    })
+
+   }
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -51,7 +81,7 @@ const Classes = () => {
           <span className="">Price:${singleClass?.price}</span>
         </th>
         <th>
-          <button className="btn btn-xs btn-bg-color ">Select</button>
+          <button onClick={()=>addSelectedItemTodb(singleClass)} className="btn btn-xs btn-bg-color ">Select</button>
         </th>
       </tr>)
       }
