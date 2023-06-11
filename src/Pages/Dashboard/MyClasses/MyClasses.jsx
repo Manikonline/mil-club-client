@@ -3,7 +3,7 @@
 const MyClasses = () => {
     return (
         <div>
-            <h3>my classes list comming</h3>
+            <h2>comming</h2>
         </div>
     );
 };

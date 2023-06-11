@@ -9,7 +9,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
   const [usersData, setUserData]=useState([])
   const {user}=useContext(AuthContext);
-  console.log('user from auth',user)
+  // console.log('user from auth',user)
 //   const { data: singleuser = [], refetch } = useQuery(["singleuser"], async () => {
 //     const res = await fetch(`http://localhost:5000/users?email=${user?.email}`)
 //     return res.json();

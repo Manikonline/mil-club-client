@@ -1,20 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 
 const Classes = () => {
      const {user}=useContext(AuthContext)
+     const [disable, setDisable]=useState(false)
 
   const{data:classes=[]}=useQuery(["classes"],async()=>{
     const res = await fetch('http://localhost:5000/spacificclasses')
     return res.json()
   })
   console.log(classes)
-    
+  // console.log(disable)
    const addSelectedItemTodb=(data)=>{
     console.log(data)
+   
     const saveServer={class_name:data?.class_name, image:data?.image, seats:data?.available_seats, price:data?.price, email:user?.email}
     fetch('http://localhost:5000/selectedClass',{
       method:"POST",
@@ -26,15 +28,22 @@ const Classes = () => {
     .then(res=>res.json())
     .then(data=>{
       if(data.insertedId){
+        setDisable(true);
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Item added Successfully',
           showConfirmButton: false,
           timer: 1500
+          
+       
         })
+ 
+        
       }
     })
+    
+  
 
    }
 
@@ -55,7 +64,6 @@ const Classes = () => {
       </tr>
     </thead>
     <tbody>
-    {/* {"_id":{"$oid":"648580594602b5ab3839d1fb"},"class_name":"Violin Class","image":"https://i.ibb.co/kcZJHKv/HJmuDQD.jpg","instructor_name":"Michael Johnson","instructor_email":"michael@johnson.com","role":"approved","available_seats":"6","price":"4000","student":"20"} */}
       {
         classes.map((singleClass,index)=> <tr key={singleClass._id}>
           <td>
@@ -81,7 +89,10 @@ const Classes = () => {
           <span className="">Price:${singleClass?.price}</span>
         </th>
         <th>
-          <button onClick={()=>addSelectedItemTodb(singleClass)} className="btn btn-xs btn-bg-color ">Select</button>
+          {
+            disable ?<button  onClick={()=>addSelectedItemTodb(singleClass)}  className="btn btn-xs btn-bg-color disabled">Select</button>:<button  onClick={()=>addSelectedItemTodb(singleClass)}  className="btn btn-xs btn-bg-color">Select</button>
+          }
+          
         </th>
       </tr>)
       }

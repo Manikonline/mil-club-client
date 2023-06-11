@@ -28,6 +28,7 @@ import ManageUser from './Pages/Dashboard/ManageUser/ManageUser';
 import ManageClasses from './Pages/Dashboard/ManageClasses/ManageClasses';
 import AddClasses from './Pages/Dashboard/AddClasses/AddClasses';
 import MyClasses from './Pages/Dashboard/MyClasses/MyClasses';
+import Payment from './Pages/Dashboard/Payment/Payment';
 const queryClient = new QueryClient()
 
 
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path:'myclasses',
         element:<MyClasses></MyClasses>
+      },
+      {
+        path:'payment',
+        element:<Payment></Payment>
       }
     ]
   },
