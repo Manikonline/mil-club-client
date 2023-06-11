@@ -26,6 +26,8 @@ import Enrollod from './Pages/Dashboard/Enrollod/Enrollod';
 import PaymentHistory from './Pages/Dashboard/PaymentHistory/PaymentHistory';
 import ManageUser from './Pages/Dashboard/ManageUser/ManageUser';
 import ManageClasses from './Pages/Dashboard/ManageClasses/ManageClasses';
+import AddClasses from './Pages/Dashboard/AddClasses/AddClasses';
+import MyClasses from './Pages/Dashboard/MyClasses/MyClasses';
 const queryClient = new QueryClient()
 
 
@@ -81,6 +83,14 @@ const router = createBrowserRouter([
       {
         path:'manageclasses',
         element:<ManageClasses></ManageClasses>
+      },
+      {
+        path:'addclasses',
+        element:<AddClasses></AddClasses>
+      },
+      {
+        path:'myclasses',
+        element:<MyClasses></MyClasses>
       }
     ]
   },

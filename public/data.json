@@ -3,48 +3,60 @@
     "class_name": "Guitar Class",
     "image": "https://i.ibb.co/4VngXZ8/images.jpg",
     "instructor_name": "John Smith",
-    "available_seats": 10,
-    "price":3500,
-    "student":35
+    "instructor_email":"john@smith.com",
+    "role":"approved",
+    "available_seats": "10",
+    "price":"3500",
+    "student":"35"
   },
   {
     "class_name": "Piano Class",
     "image": "https://i.ibb.co/D51JRjb/piano.jpg",
     "instructor_name": "Sarah Wilson",
-    "available_seats": 8,
-    "price":4500,
-    "student":25
+    "instructor_email":"sarah@wilson.com",
+    "role":"approved",
+    "available_seats":"8",
+    "price":"4500",
+    "student":"25"
   },
   {
     "class_name": "Violin Class",
     "image": "https://i.ibb.co/kcZJHKv/HJmuDQD.jpg",
     "instructor_name": "Michael Johnson",
-    "available_seats": 6,
-    "price":4000,
-    "student":20
+    "instructor_email":"michael@johnson.com",
+    "role":"approved",
+    "available_seats":"6",
+    "price":"4000",
+    "student":"20"
   },
   {
     "class_name": "Drum Class",
     "image": "https://i.ibb.co/B4WMT70/images-1.jpg",
     "instructor_name": "Jane Doe",
-    "available_seats": 4,
-    "price":4200,
-    "student":15
+    "instructor_email":"jane@doe.com",
+    "role":"approved",
+    "available_seats":"4",
+    "price":"4200",
+    "student":"15"
   },
   {
     "class_name": "Saxophone Class",
     "image": "https://i.ibb.co/2nLjyrJ/saxophone.jpg",
     "instructor_name": "David Lee",
-    "available_seats": 12,
-    "price": 5000,
-    "student":15
+    "instructor_email":"david@lee.com",
+    "role":"approved",
+    "available_seats":"12",
+    "price": "5000",
+    "student":"15"
   },
   {
     "class_name": "Flute Class",
     "image": "https://i.ibb.co/61Zfzg4/istockphoto-601007812-612x612.jpg",
     "instructor_name": "Emily Davis",
-    "available_seats": 5,
-    "price": 2500,
-    "student":10
+    "instructor_email":"emily@davis.com",
+    "role":"approved",
+    "available_seats": "5",
+    "price":"2500",
+    "student":"10"
   }
 ]
