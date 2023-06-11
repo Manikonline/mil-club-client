@@ -63,7 +63,7 @@ const ManageUser = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-black text-white">
                             <th>
 
                             </th>
@@ -83,7 +83,7 @@ const ManageUser = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={user?.photo} alt="Avatar Tailwind CSS Component" />
+                                                <img src={user?.photo} alt="image" />
                                             </div>
                                         </div>
                                         <div>

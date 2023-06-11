@@ -58,13 +58,13 @@ const Registration = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-        .then((result) => {
+        .then(result => {
             // This gives you a Google Access Token. You can use it to access Google APIs.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            // {"_id":{"$oid":"6484aa9813a6ffdb334d31cd"},"name":"Tanvir Zain","email":"tanvir@zail.com","password":"123456A!","photo":"https://ibb.co/K6tkQFq","role":"instructor"}
             const user = result.user;
             console.log(user)
-            const saveUser={name:user?.displayName, email:user?.email, photo:user?.photoURL}
+            const saveUser={name:user?.displayName, email:user?.email, photo:user?.photoURL,role:'Student'}
             fetch('http://localhost:5000/users',{
               method:'POST',
               headers:{
