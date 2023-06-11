@@ -49,8 +49,8 @@ useEffect(()=>{
               }
               {
                 (usersData[0]?.role=='instructor')&&<>
-                <li><NavLink to='addclasses'> <FaCheckDouble></FaCheckDouble>add class</NavLink></li>
-                <li><NavLink to='myclasses'> <FaWallet></FaWallet>my class</NavLink></li></>
+                <li><NavLink to='addclasses'> <FaCheckDouble></FaCheckDouble>Add Class</NavLink></li>
+                <li><NavLink to='myclasses'> <FaWallet></FaWallet>My Class</NavLink></li></>
               }
    
               {

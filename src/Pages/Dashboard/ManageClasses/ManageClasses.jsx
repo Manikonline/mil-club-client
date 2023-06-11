@@ -5,16 +5,16 @@ import Swal from "sweetalert2";
 
 const ManageClasses = () => {
  
-    const { data: classes = [], refetch } = useQuery(["classes"], async () => {
+    const { data: getclasses = [], refetch } = useQuery(["getclasses"], async () => {
         // const res = await fetch(`http://localhost:5000/classes/${user.email}`)
-        const res = await fetch(`http://localhost:5000/classes`)
+        const res = await fetch(`http://localhost:5000/getclasses`)
         return res.json();
     })
-    console.log(classes)
+    console.log(getclasses)
 
 
     const handleApproved = (singleClass) => {
-        fetch(`http://localhost:5000/users/admin/${singleClass?._id}`, {
+        fetch(`http://localhost:5000/classes/approved/${singleClass?._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -25,6 +25,25 @@ const ManageClasses = () => {
                         position: 'top-end',
                         icon: 'success',
                         title: `${singleClass.class_name} is Approved!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
+
+    const handledenied =(singleClass)=>{
+        fetch(`http://localhost:5000/classes/denied/${singleClass?._id}`, {
+            method: "PATCH"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${singleClass.class_name} is Denied!`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -50,7 +69,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map((singleClass, index) => <tr key={singleClass._id}>
+                            getclasses.map((singleClass, index) => <tr key={singleClass._id}>
                                 <th>
                                     {index + 1}
                                 </th>
@@ -79,7 +98,7 @@ const ManageClasses = () => {
                                 </td>
                                 <td>
                                     <button onClick={() => handleApproved(singleClass)} className="btn btn-bg-color btn-xs">Approved</button>
-                                    <button className="btn btn-bg-color btn-xs">Denied</button>
+                                    <button onClick={() => handledenied(singleClass)} className="btn btn-bg-color btn-xs px-5">Denied</button>
                                     <button className="btn btn-bg-color btn-xs">Feedback</button>
                                 </td>
                             </tr>)

@@ -7,7 +7,7 @@ import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 
 
 const ManageUser = () => {
-    const{user}=useContext(AuthContext)
+    const{user,}=useContext(AuthContext)
     const { data: users = [], refetch } = useQuery(["users"], async () => {
         // const res = await fetch(`http://localhost:5000/users/${user.email}`)
         const res = await fetch(`http://localhost:5000/allusers`)
