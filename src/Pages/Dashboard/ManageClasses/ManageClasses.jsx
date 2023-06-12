@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 
 const ManageClasses = () => {
- 
+
     const { data: getclasses = [], refetch } = useQuery(["getclasses"], async () => {
         // const res = await fetch(`http://localhost:5000/classes/${user.email}`)
         const res = await fetch(`http://localhost:5000/getclasses`)
@@ -32,7 +32,7 @@ const ManageClasses = () => {
             })
     }
 
-    const handledenied =(singleClass)=>{
+    const handledenied = (singleClass) => {
         fetch(`http://localhost:5000/classes/denied/${singleClass?._id}`, {
             method: "PATCH"
         })
@@ -51,6 +51,8 @@ const ManageClasses = () => {
             })
     }
 
+
+ 
     return (
         <div>
             <div className="overflow-x-auto">
@@ -97,9 +99,17 @@ const ManageClasses = () => {
                                     <span className="">{singleClass?.role}</span>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleApproved(singleClass)} className="btn btn-bg-color btn-xs">Approved</button>
-                                    <button onClick={() => handledenied(singleClass)} className="btn btn-bg-color btn-xs px-5">Denied</button>
-                                    <button className="btn btn-bg-color btn-xs">Feedback</button>
+                                    {
+                                        singleClass?.role == 'approved'? <button onClick={() => handleApproved(singleClass)} className="btn btn-bg-color btn-xs" disabled>Approved</button>: <button onClick={() => handleApproved(singleClass)} className="btn btn-bg-color btn-xs">Approved</button>
+                                    }
+
+                                    {
+                                        singleClass?.role == 'denied'? <button onClick={() => handledenied(singleClass)} className="btn btn-bg-color btn-xs px-5" disabled>Denied</button> :<button onClick={() => handledenied(singleClass)} className="btn btn-bg-color btn-xs px-5">Denied</button>
+                                    }
+                                    
+                                    
+                                    <button  className="btn btn-bg-color btn-xs px-5">Feedback</button>
+                                     
                                 </td>
                             </tr>)
                         }

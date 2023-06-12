@@ -95,7 +95,16 @@ const ManageUser = () => {
                                     <span className="badge badge-ghost badge-sm">{user?.email}</span>
                                 </td>
                                 <td>{user?.role}</td>
-                                <td ><span className="ms-5"><button onClick={() => handleMakeInstructor(user)} title="Make Instructor" className=" btn btn-xs btn-bg-color"><FaUserCog></FaUserCog></button> <button onClick={() => handleMakeAdmin(user)} title="Make Admin" className="btn btn-xs ms-4 btn-bg-color"><FaUserShield></FaUserShield></button></span></td>
+                                <td ><span className="ms-5">
+                                    {
+                                        user?.role == 'instructor'? <button onClick={() => handleMakeInstructor(user)} title="Make Instructor" className=" btn btn-xs btn-bg-color" disabled><FaUserCog></FaUserCog></button>: <button onClick={() => handleMakeInstructor(user)} title="Make Instructor" className=" btn btn-xs btn-bg-color"><FaUserCog></FaUserCog></button>
+                                    }
+                                    
+                                    {
+                                        user?.role == 'admin'? <button onClick={() => handleMakeAdmin(user)} title="Make Admin" className="btn btn-xs ms-4 btn-bg-color" disabled><FaUserShield></FaUserShield></button>: <button onClick={() => handleMakeAdmin(user)} title="Make Admin" className="btn btn-xs ms-4 btn-bg-color"><FaUserShield></FaUserShield></button>
+                                    }
+                                    
+                                    </span></td>
 
                             </tr>)
                         }
