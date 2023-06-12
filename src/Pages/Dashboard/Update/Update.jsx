@@ -1,33 +1,36 @@
+
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData, } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 
-const AddClasses = () => {
+const Update = () => {
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const data= useLoaderData()
+    console.log('aaaaaaaaaaaaaaaaaaaa',data)
+ 
 
 
     const onSubmit = data => {
         console.log(data)
-        const saveServer={class_name:data.class_name,instructor_email:data.instructor_email,image:data.image, instructor_name:data.instructor_name,available_seats:data.available_seats,price:data.price,student:"0",role:"panding"}
-        fetch('http://localhost:5000/classes',{
-            method:'POST',
+        fetch(`http://localhost:5000/updatedclass/${data?._id}`,{
+            method:'PUT',
             headers:{
               'content-type':'application/json'
             },
-            body:JSON.stringify(saveServer)
+            body:JSON.stringify(data)
           })
           .then(res=>res.json())
           .then(data=>{
-            if(data.insertedId){
+            if(data.modifiedCount > 0){
               
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Class has been added Successfull',
+                title: 'Class has been updated Successfull',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -38,8 +41,10 @@ const AddClasses = () => {
           console.log(error)
   
         })
-     console.log("from save server",saveServer)
+
     }
+
+   
     return (
         <div>
             <div>
@@ -49,7 +54,7 @@ const AddClasses = () => {
                             <h1 className="text-2xl mt-1 font-bold text-color">Add Your class</h1>
                         </div>
                         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
-                            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            <form onSubmit={handleSubmit(onSubmit)}  className="card-body">
                                 <div className="form-control">
 
                                     <input type="text"  {...register("class_name", { required: true })} name="class_name" placeholder="Enter class name" className="text-black input input-bordered" />
@@ -104,4 +109,4 @@ const AddClasses = () => {
     );
 };
 
-export default AddClasses;
+export default Update;

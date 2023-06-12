@@ -29,6 +29,7 @@ import ManageClasses from './Pages/Dashboard/ManageClasses/ManageClasses';
 import AddClasses from './Pages/Dashboard/AddClasses/AddClasses';
 import MyClasses from './Pages/Dashboard/MyClasses/MyClasses';
 import Payment from './Pages/Dashboard/Payment/Payment';
+import Update from './Pages/Dashboard/Update/Update';
 const queryClient = new QueryClient()
 
 
@@ -96,6 +97,11 @@ const router = createBrowserRouter([
       {
         path:'payment',
         element:<Payment></Payment>
+      },
+      {
+        path:'myupdatedclass/:id',
+        element:<Update></Update>,
+        loader:({params})=>fetch(`http://localhost:5000/myupdatedclass/${params.id}`)
       }
     ]
   },
