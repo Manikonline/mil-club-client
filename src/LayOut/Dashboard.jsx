@@ -3,6 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { FaCheckDouble, FaFileImport, FaHome, FaPeopleCarry, FaPlayCircle, FaUserCog, FaUserShield, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import UseTitle from "../useTitle";
 // import useAdmin from "../Hooks/useAdmin";
 
 
@@ -27,6 +28,8 @@ useEffect(()=>{
  
   
 },[user])
+
+UseTitle('Dashboard')
 
 
   return (

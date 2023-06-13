@@ -6,6 +6,7 @@ import { AuthContext } from '../../Providers/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import {FaGoogle} from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
+import UseTitle from '../../useTitle';
 
 const Registration = () => {
 
@@ -88,6 +89,7 @@ const Registration = () => {
         });
 
 }
+   UseTitle('registration')
  
   return (
     <div>

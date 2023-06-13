@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { FaUserCog, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
+import UseTitle from "../../../useTitle";
 
 
 
@@ -53,6 +54,8 @@ const ManageUser = () => {
                 }
             })
     }
+
+    UseTitle('Dashboard/ManageUsers')
 
 
 

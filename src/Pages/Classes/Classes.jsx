@@ -2,11 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import UseTitle from "../../useTitle";
 
 
 const Classes = () => {
      const {user}=useContext(AuthContext)
-     const [disable, setDisable]=useState(false)
+     const navigate=useNavigate()
+     
 
   const{data:classes=[]}=useQuery(["classes"],async()=>{
     const res = await fetch('http://localhost:5000/spacificclasses')
@@ -28,7 +31,6 @@ const Classes = () => {
     .then(res=>res.json())
     .then(data=>{
       if(data.insertedId){
-        setDisable(true);
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -46,6 +48,8 @@ const Classes = () => {
   
 
    }
+
+   UseTitle('classes')
 
 
     return (
@@ -90,7 +94,7 @@ const Classes = () => {
         </th>
         <th>
           {
-            disable ?<button  onClick={()=>addSelectedItemTodb(singleClass)}  className="btn btn-xs btn-bg-color disabled">Select</button>:<button  onClick={()=>addSelectedItemTodb(singleClass)}  className="btn btn-xs btn-bg-color">Select</button>
+            user ?<button  onClick={()=>addSelectedItemTodb(singleClass)}  className="btn btn-xs btn-bg-color disabled">Select</button>:<Link to='/login'><button  className="btn btn-xs btn-bg-color disabled">Select</button></Link> 
           }
           
         </th>

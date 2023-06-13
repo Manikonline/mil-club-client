@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import {FaEye, FaEyeSlash, FaGoogle} from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
+import UseTitle from '../../useTitle';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -78,6 +79,8 @@ const Login = () => {
     const toggle=()=>{
         setOpen(!open)
     }
+
+    UseTitle('login')
    
     return (
         <div>

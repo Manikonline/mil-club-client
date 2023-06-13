@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import UseTitle from "../../../useTitle";
 
 
 const AddClasses = () => {
@@ -40,6 +41,7 @@ const AddClasses = () => {
         })
      console.log("from save server",saveServer)
     }
+    UseTitle('Dashboard/addClass')
     return (
         <div>
             <div>

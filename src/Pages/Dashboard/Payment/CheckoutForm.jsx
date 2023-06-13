@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import UseTitle from "../../../useTitle";
 
 
 const CheckoutForm = ({alldata}) => {
@@ -14,6 +16,7 @@ const CheckoutForm = ({alldata}) => {
     const [processing, setProcessing]=useState(false)
     const[transactionId, setTransactionId]=useState('');
     const{user}=useContext(AuthContext)
+    const navigate=useNavigate()
 
 
     useEffect(()=>{
@@ -99,10 +102,13 @@ const CheckoutForm = ({alldata}) => {
                 timer: 1500
               })
             }
+              navigate('/dashboard/paymentHistory')
           })
 
         }
     }
+
+    UseTitle('Dashboard/CheckOutForm')
     return (
        <>
               <form className="w-96 m-8" onSubmit={handleSubmit}>

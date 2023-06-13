@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import UseTitle from "../../../useTitle";
 
 
 const MyClasses = () => {
@@ -12,6 +13,8 @@ const MyClasses = () => {
         return res.json();
     })
     console.log('my classseee', myclasses)
+
+    UseTitle('Dashboard/MyClasses')
     return (
         <div>
             <div className="overflow-x-auto">

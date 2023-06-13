@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import UseTitle from "../../../useTitle";
 
 
 const Instructors = () => {
@@ -22,6 +23,8 @@ const Instructors = () => {
         })
         
     },[])
+
+    UseTitle('instructors')
 
   
 

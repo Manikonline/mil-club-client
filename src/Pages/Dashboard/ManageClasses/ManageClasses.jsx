@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import UseTitle from "../../../useTitle";
 
 
 
@@ -50,6 +51,8 @@ const ManageClasses = () => {
                 }
             })
     }
+
+    UseTitle('Dashboard/ManageClasses')
 
 
  

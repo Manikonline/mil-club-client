@@ -30,6 +30,7 @@ import AddClasses from './Pages/Dashboard/AddClasses/AddClasses';
 import MyClasses from './Pages/Dashboard/MyClasses/MyClasses';
 import Payment from './Pages/Dashboard/Payment/Payment';
 import Update from './Pages/Dashboard/Update/Update';
+import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 const queryClient = new QueryClient()
 
 
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
     path:'dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
+      {
+       path:'/dashboard',
+       element:<DashboardHome></DashboardHome>
+      },
       {
         path:'selectedClass',
         element:<SelectedClasses></SelectedClasses>

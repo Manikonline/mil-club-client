@@ -6,6 +6,7 @@ import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import UseTitle from "../../../useTitle";
 
 const SelectedClasses = () => {
 
@@ -62,6 +63,8 @@ const SelectedClasses = () => {
   //   price: itemPrice
   // }
   // console.log(itemPrice);
+
+  UseTitle('Dashboard/SelectedClasses')
 
   return (
     <div>

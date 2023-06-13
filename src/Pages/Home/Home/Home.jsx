@@ -1,4 +1,5 @@
 
+import UseTitle from "../../../useTitle";
 import Instruments from "../Instruments/Instruments";
 import OurInstructors from "../OurInstructors/OurInstructors";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -6,6 +7,7 @@ import Slider from "../Slider/Slider";
 
 
 const Home = () => {
+    UseTitle('Home')
     return (
         <div>
           

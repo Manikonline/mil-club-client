@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import { useContext } from "react";
+import UseTitle from "../../../useTitle";
 
 
 const PaymentHistory = () => {
@@ -11,6 +12,8 @@ const PaymentHistory = () => {
         return res.json();
     })
     console.log('selected dataaaaaaaaaaaa', paymenthistory)
+
+    UseTitle('Dashboard/PaymentHistory')
 
     return (
         <div>

@@ -1,23 +1,24 @@
 
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLoaderData, } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import UseTitle from "../../../useTitle";
 
 
 const Update = () => {
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const data= useLoaderData()
-    console.log('aaaaaaaaaaaaaaaaaaaa',data)
+    const userdata= useLoaderData()
+    console.log('aaaaaaaaaaaaaaaaaaaa',userdata)
  
-
+    const navigate=useNavigate();
 
     const onSubmit = data => {
         console.log(data)
-        fetch(`http://localhost:5000/updatedclass/${data?._id}`,{
-            method:'PUT',
+        fetch(`http://localhost:5000/updatedclass/${userdata?._id}`,{
+            method:'PATCH',
             headers:{
               'content-type':'application/json'
             },
@@ -34,7 +35,7 @@ const Update = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
-             
+              navigate('/dashboard/myclasses')
             }
           })
         .catch(error => {
@@ -43,6 +44,7 @@ const Update = () => {
         })
 
     }
+    UseTitle('Dashboard/Update')
 
    
     return (
@@ -51,7 +53,7 @@ const Update = () => {
                 <div className="hero min-h-screen ">
                     <div className="">
                         <div className="text-center ">
-                            <h1 className="text-2xl mt-1 font-bold text-color">Add Your class</h1>
+                            <h1 className="text-2xl mt-1 font-bold text-color">Update classe</h1>
                         </div>
                         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
                             <form onSubmit={handleSubmit(onSubmit)}  className="card-body">
@@ -94,7 +96,7 @@ const Update = () => {
                                 </div>
 
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-bg-color text-white ">Add Class</button>
+                                    <button className="btn btn-bg-color text-white ">Update</button>
                                 </div>
                                
                             </form>
