@@ -60,11 +60,11 @@ const Classes = () => {
     <thead>
       <tr>
         <th></th>
-        <th>Imge & Name</th>
+        <th>Image & Name</th>
         <th>Instructors Name</th>
         <th>Available Seats</th>
         <th>Price</th>
-        <th>Optioh</th>
+        <th>Option</th>
       </tr>
     </thead>
     <tbody>
