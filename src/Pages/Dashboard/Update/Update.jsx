@@ -17,7 +17,7 @@ const Update = () => {
 
     const onSubmit = data => {
         console.log(data)
-        fetch(`http://localhost:5000/updatedclass/${userdata?._id}`,{
+        fetch(`https://mil-club-server.vercel.app/updatedclass/${userdata?._id}`,{
             method:'PATCH',
             headers:{
               'content-type':'application/json'

@@ -106,7 +106,7 @@ const router = createBrowserRouter([
       {
         path:'myupdatedclass/:id',
         element:<Update></Update>,
-        loader:({params})=>fetch(`http://localhost:5000/myupdatedclass/${params.id}`)
+        loader:({params})=>fetch(`https://mil-club-server.vercel.app/myupdatedclass/${params.id}`)
       }
     ]
   },

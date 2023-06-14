@@ -7,7 +7,7 @@ import UseTitle from "../../../useTitle";
 const Enrollod = () => {
     const { user } = useContext(AuthContext)
     const { data: paymentuser = [], refetch } = useQuery(["paymentuser"], async () => {
-        const res = await fetch(`http://localhost:5000/allpayments?email=${user?.email}`)
+        const res = await fetch(`https://mil-club-server.vercel.app/allpayments?email=${user?.email}`)
         return res.json();
     })
     console.log('selected data', paymentuser)

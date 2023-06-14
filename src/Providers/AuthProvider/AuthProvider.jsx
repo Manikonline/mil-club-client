@@ -63,7 +63,7 @@ const AuthProvider = ({children}) => {
             setUser(loggedUser);
             // // get and set jwt token
             // if(loggedUser){
-            //     axios.post('http://localhost:5000/users',{email:loggedUser.email})
+            //     axios.post('https://mil-club-server.vercel.app/users',{email:loggedUser.email})
             // .then(data=>{
             //     console.log(data.data.token)
             //     localStorage.setItem('access-token',data.data.token)

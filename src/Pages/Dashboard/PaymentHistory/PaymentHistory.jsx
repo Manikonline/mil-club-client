@@ -8,7 +8,7 @@ const PaymentHistory = () => {
 
     const { user } = useContext(AuthContext)
     const { data: paymenthistory = [], refetch } = useQuery(["paymenthistory"], async () => {
-        const res = await fetch(`http://localhost:5000/allpayments?email=${user?.email}`)
+        const res = await fetch(`https://mil-club-server.vercel.app/allpayments?email=${user?.email}`)
         return res.json();
     })
     console.log('selected dataaaaaaaaaaaa', paymenthistory)

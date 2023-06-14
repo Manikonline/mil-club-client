@@ -14,13 +14,13 @@ const SelectedClasses = () => {
   // const [classes, setClasses]=useState([])
   // const [itemPrice, setItemPrice] = useState(null)
   const { data: myclasses = [], refetch } = useQuery(["myclasses"], async () => {
-    const res = await fetch(`http://localhost:5000/userclasses?email=${user?.email}`)
+    const res = await fetch(`https://mil-club-server.vercel.app/userclasses?email=${user?.email}`)
     return res.json();
   })
   console.log('selected data', myclasses)
 
   // useEffect(() => {
-  //     fetch(`http://localhost:5000/userclasses?email=${user?.email}`)
+  //     fetch(`https://mil-club-server.vercel.app/userclasses?email=${user?.email}`)
   //       .then(res => res.json())
   //       .then(data => {
   //         console.log('heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',data)
@@ -31,7 +31,7 @@ const SelectedClasses = () => {
 
   const deleteItem = (data) => {
     console.log(data)
-    fetch(`http://localhost:5000/userclasses/${data._id}`, {
+    fetch(`https://mil-club-server.vercel.app/userclasses/${data._id}`, {
       method: "DELETE",
 
     })

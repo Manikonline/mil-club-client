@@ -7,15 +7,15 @@ import UseTitle from "../../../useTitle";
 const ManageClasses = () => {
 
     const { data: getclasses = [], refetch } = useQuery(["getclasses"], async () => {
-        // const res = await fetch(`http://localhost:5000/classes/${user.email}`)
-        const res = await fetch(`http://localhost:5000/getclasses`)
+        // const res = await fetch(`https://mil-club-server.vercel.app/classes/${user.email}`)
+        const res = await fetch(`https://mil-club-server.vercel.app/getclasses`)
         return res.json();
     })
     console.log(getclasses)
 
 
     const handleApproved = (singleClass) => {
-        fetch(`http://localhost:5000/classes/approved/${singleClass?._id}`, {
+        fetch(`https://mil-club-server.vercel.app/classes/approved/${singleClass?._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const ManageClasses = () => {
     }
 
     const handledenied = (singleClass) => {
-        fetch(`http://localhost:5000/classes/denied/${singleClass?._id}`, {
+        fetch(`https://mil-club-server.vercel.app/classes/denied/${singleClass?._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())

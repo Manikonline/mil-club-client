@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import UseTitle from "../../../useTitle";
@@ -14,7 +14,7 @@ const AddClasses = () => {
     const onSubmit = data => {
         console.log(data)
         const saveServer={class_name:data.class_name,instructor_email:data.instructor_email,image:data.image, instructor_name:data.instructor_name,available_seats:data.available_seats,price:data.price,student:"0",role:"panding"}
-        fetch('http://localhost:5000/classes',{
+        fetch('https://mil-club-server.vercel.app/classes',{
             method:'POST',
             headers:{
               'content-type':'application/json'
@@ -34,6 +34,7 @@ const AddClasses = () => {
               })
              
             }
+
           })
         .catch(error => {
           console.log(error)

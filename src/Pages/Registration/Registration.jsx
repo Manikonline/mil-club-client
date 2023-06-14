@@ -27,7 +27,7 @@ const Registration = () => {
         console.log(loggedUser)
         updateUserData(result.user, data?.name, data?.photo)
         const saveServer={name:data.name, email:data.email, password:data.password, photo:data.photo,role:"Student"}
-        fetch('http://localhost:5000/users',{
+        fetch('https://mil-club-server.vercel.app/users',{
           method:'POST',
           headers:{
             'content-type':'application/json'
@@ -64,7 +64,7 @@ const Registration = () => {
             const user = result.user;
             console.log(user)
             const saveUser={name:user?.displayName, email:user?.email, photo:user?.photoURL,role:'Student'}
-            fetch('http://localhost:5000/users',{
+            fetch('https://mil-club-server.vercel.app/users',{
               method:'POST',
               headers:{
                 'content-type':'application/json'

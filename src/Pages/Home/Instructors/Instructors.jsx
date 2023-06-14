@@ -9,14 +9,14 @@ const Instructors = () => {
    
 
     const { data: users = [], refetch } = useQuery(["users"], async () => {
-      // const res = await fetch(`http://localhost:5000/users/${user.email}`)
-      const res = await fetch(`http://localhost:5000/getinstructor`)
+      // const res = await fetch(`https://mil-club-server.vercel.app/users/${user.email}`)
+      const res = await fetch(`https://mil-club-server.vercel.app/getinstructor`)
       return res.json();
   })
   console.log('instructor ',users)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/instructors')
+        fetch('https://mil-club-server.vercel.app/instructors')
         .then(res=>res.json())
         .then(data=>{
             setInstructors(data)

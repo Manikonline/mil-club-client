@@ -5,7 +5,7 @@
 
 
 // const axiosSecure = axios.create({
-//   baseURL: 'http://localhost:5000', 
+//   baseURL: 'https://mil-club-server.vercel.app', 
 // });
 
 // const useAxiosSecure = () => {

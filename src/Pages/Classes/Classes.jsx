@@ -12,7 +12,7 @@ const Classes = () => {
      
 
   const{data:classes=[]}=useQuery(["classes"],async()=>{
-    const res = await fetch('http://localhost:5000/spacificclasses')
+    const res = await fetch('https://mil-club-server.vercel.app/spacificclasses')
     return res.json()
   })
   console.log(classes)
@@ -21,7 +21,7 @@ const Classes = () => {
     console.log(data)
    
     const saveServer={class_name:data?.class_name, image:data?.image, seats:data?.available_seats, price:data?.price, email:user?.email}
-    fetch('http://localhost:5000/selectedClass',{
+    fetch('https://mil-club-server.vercel.app/selectedClass',{
       method:"POST",
       headers:{
         'content-type':'application/json'

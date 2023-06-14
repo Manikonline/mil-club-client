@@ -20,7 +20,7 @@ const CheckoutForm = ({alldata}) => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/create-payment-intent',{
+        fetch('https://mil-club-server.vercel.app/create-payment-intent',{
           method:"POST",
           headers:{
             'content-type':'application/json'
@@ -83,7 +83,7 @@ const CheckoutForm = ({alldata}) => {
           // save payment info to the server
           const{price,class_name,image,seats}=alldata
           const payment ={email:user?.email,transactionId:paymentIntent.id,price,quantity:'1',date: new Date(),status:'paid',class_name:class_name,image:image,available_seats:seats,classId:_id}
-          fetch('http://localhost:5000/payments',{
+          fetch('https://mil-club-server.vercel.app/payments',{
             method:'POST',
             headers:{
               'content-type':'application/json'

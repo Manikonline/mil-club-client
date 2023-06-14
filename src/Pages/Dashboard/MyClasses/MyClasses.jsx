@@ -9,7 +9,7 @@ const MyClasses = () => {
 
     const { user } = useContext(AuthContext)
     const { data: myclasses = [], refetch } = useQuery(["myclasses"], async () => {
-        const res = await fetch(`http://localhost:5000/myaddedclasses?email=${user?.email}`)
+        const res = await fetch(`https://mil-club-server.vercel.app/myaddedclasses?email=${user?.email}`)
         return res.json();
     })
     console.log('my classseee', myclasses)
